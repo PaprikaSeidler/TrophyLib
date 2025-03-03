@@ -9,7 +9,7 @@ namespace TrophyLib
     public class TrophiesRepository
     {
         private List<Trophy> trophies = new List<Trophy>();
-        private int _nextId = 1;
+        private int _nextId = 0;
 
         public List<Trophy> Get(int? FilterByYear = null, string? SortByCompetition = null) //Hvad er en comy constructor? Og hvordan bruges den her?
         {
