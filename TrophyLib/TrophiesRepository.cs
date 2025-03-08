@@ -11,16 +11,26 @@ namespace TrophyLib
         private List<Trophy> trophies = new List<Trophy>();
         private int _nextId = 0;
 
-        public List<Trophy> Get(int? FilterByYear = null, string? SortByCompetition = null) //Hvad er en comy constructor? Og hvordan bruges den her?
+        public TrophiesRepository()
         {
-            var result = new List<Trophy>(trophies);
+            Add(new Trophy { Competition = "World cup", Year = 2025 });
+            Add(new Trophy { Competition = "Best in show", Year = 2024 });
+            Add(new Trophy { Competition = "Dog of the year", Year = 2021 });
+            Add(new Trophy { Competition = "Best in show", Year = 2023 });
+            Add(new Trophy { Competition = "Dog of the year", Year = 2022 });
+        }
+
+        public List<Trophy> Get(int? FilterByYear = null, string? SortByCompetition = null)
+        {
+            var result = trophies.Select(t => new Trophy(t)).ToList();
+
             if (FilterByYear != null)
             {
                 result = result.FindAll(t => t.Year == FilterByYear);
             }
             if (SortByCompetition != null)
             {
-                result = result.OrderBy(t => t.Competition).ToList(); //Måske IComparer??
+                result = result.OrderBy(t => t.Competition).ToList();
             }
             return result;
         }

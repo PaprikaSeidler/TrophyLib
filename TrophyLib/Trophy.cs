@@ -5,6 +5,17 @@
         private string? _competition;
         private int _year;
 
+        public Trophy()
+        {
+        }
+
+        public Trophy(Trophy t)
+        {
+            Id = t.Id;
+            Competition = t.Competition;
+            Year = t.Year;
+        }
+
         public int Id { get; set; }
         public string Competition
         {
